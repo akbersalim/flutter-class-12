@@ -84,7 +84,7 @@ class _MyBodyState extends State<MyBody> {
               height: MediaQuery.of(context).size.height - 300,
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: name.length==null?0:name.length,
+                itemCount: name.length == null ? 0 : name.length,
                 itemBuilder: (context, index) {
                   return Card(
                     elevation: 3.0,
@@ -101,17 +101,17 @@ class _MyBodyState extends State<MyBody> {
                         ),
                       ),*/
                       trailing: GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            name.removeAt(index);
-                            age.removeAt(index);
-                            rollno.removeAt(index);
-                          });
-                        },
+                          onTap: () {
+                            setState(() {
+                              name.removeAt(index);
+                              age.removeAt(index);
+                              rollno.removeAt(index);
+                            });
+                          },
                           child: Icon(
-                        Icons.delete,
-                        color: Colors.purple,
-                      )),
+                            Icons.delete,
+                            color: Colors.purple,
+                          )),
                       title: Text(
                         "Name: " + name[index],
                         style: TextStyle(color: Colors.purple),
