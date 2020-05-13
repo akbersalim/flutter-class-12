@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 void main() => runApp(ViewAll());
 
 class ViewAll extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,18 +12,6 @@ class ViewAll extends StatelessWidget {
     );
   }
 }
-/*
-home: GestureDetector(
-        onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => MBCET(name, pass)));
-        },
-        child: Scaffold(body: SingleChildScrollView(child: MyBody())),
-      ),
-    );
-  }
-}
- */
 
 class MyBody extends StatefulWidget {
   @override
@@ -49,32 +35,6 @@ class _MyBodyState extends State<MyBody> {
   ];
   var age = [21, 23, 30, 25, 23, 30, 27, 25, 21, 26, 25];
   var rollno = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-  var paidstatus = [
-    true,
-    false,
-    true,
-    false,
-    true,
-    false,
-    true,
-    false,
-    true,
-    false,
-    true
-  ];
-  var imag = [
-    "https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg",
-    "https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg",
-    "https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg",
-    "https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg",
-    "https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg",
-    "https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg",
-    "https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg",
-    "https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg",
-    "https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg",
-    "https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg",
-    "https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg",
-  ];
 
   Widget build(BuildContext context) {
     TextEditingController namecontroller = TextEditingController();
@@ -113,9 +73,6 @@ class _MyBodyState extends State<MyBody> {
                   name.add(nam.toString());
                   rollno.add(int.parse(rno));
                   age.add(int.parse(ag));
-                  paidstatus.add(false);
-                  imag.add(
-                      "https://organicthemes.com/demo/profile/files/2018/05/profile-pic.jpg");
                 });
               },
               child: Text(
@@ -124,15 +81,18 @@ class _MyBodyState extends State<MyBody> {
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height-300,
+              height: MediaQuery.of(context).size.height - 300,
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: name.length,
+                itemCount: name.length==null?0:name.length,
                 itemBuilder: (context, index) {
                   return Card(
                     elevation: 3.0,
                     child: ListTile(
-                      leading: Icon(Icons.account_circle,size: 50.0,),
+                      leading: Icon(
+                        Icons.account_circle,
+                        size: 50.0,
+                      ),
 
                       /*ClipOval(
                         child: Image(
@@ -140,13 +100,18 @@ class _MyBodyState extends State<MyBody> {
                           height: 40.0,
                         ),
                       ),*/
-                      trailing: paidstatus[index]
-                          ? FlatButton(child: Text("Paid"))
-                          : FlatButton(
-                          onPressed: () {
-                            print("Clicked");
-                          },
-                          child: Text("Pay Now")),
+                      trailing: GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            name.removeAt(index);
+                            age.removeAt(index);
+                            rollno.removeAt(index);
+                          });
+                        },
+                          child: Icon(
+                        Icons.delete,
+                        color: Colors.purple,
+                      )),
                       title: Text(
                         "Name: " + name[index],
                         style: TextStyle(color: Colors.purple),
