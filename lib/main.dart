@@ -83,9 +83,9 @@ class _MyBodyState extends State<MyBody> {
                   border: OutlineInputBorder()),
             ),
             RaisedButton(
-              elevation: 20.0,
-              highlightElevation: 2.0,
-              splashColor: Colors.purple,
+              elevation: 10.0,
+              highlightElevation: 1.0,
+              splashColor: Colors.purpleAccent,
               onPressed: () {
                 var nam = namecontroller.text;
                 var rno = rnocontroller.text;
@@ -99,6 +99,7 @@ class _MyBodyState extends State<MyBody> {
                   age.add(int.parse(ag));
                 });
               },
+              shape: OutlineInputBorder(borderRadius: BorderRadius.circular(7.0)),
               child: Text(
                 "ENTER",
                 style: TextStyle(color: Colors.purple),
@@ -132,7 +133,7 @@ class _MyBodyState extends State<MyBody> {
                               rollno.removeAt(index);
                             });
                           },
-                          splashColor: Colors.white,
+                          highlightColor: Colors.purpleAccent,
                           shape: CircleBorder(),
                           elevation: 20.0,
                           child: Icon(
