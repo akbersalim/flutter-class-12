@@ -83,6 +83,9 @@ class _MyBodyState extends State<MyBody> {
                   border: OutlineInputBorder()),
             ),
             RaisedButton(
+              elevation: 20.0,
+              highlightElevation: 2.0,
+              splashColor: Colors.purple,
               onPressed: () {
                 var nam = namecontroller.text;
                 var rno = rnocontroller.text;
@@ -121,14 +124,17 @@ class _MyBodyState extends State<MyBody> {
                           height: 40.0,
                         ),
                       ),*/
-                      trailing: GestureDetector(
-                          onTap: () {
+                      trailing: MaterialButton(
+                          onPressed: () {
                             setState(() {
                               name.removeAt(index);
                               age.removeAt(index);
                               rollno.removeAt(index);
                             });
                           },
+                          splashColor: Colors.white,
+                          shape: CircleBorder(),
+                          elevation: 20.0,
                           child: Icon(
                             Icons.delete,
                             color: Colors.purple,
